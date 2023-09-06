@@ -2,26 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.blinking-dot {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: blink 1s infinite;
   }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+/* CardBar.css */
+/* Style the .scrollmenu container */
+.scrollmenu {
+  white-space: nowrap;
+  display: flex;
+  overflow-x: scroll;
+  max-height: 200px; /* Set a fixed max-height for the .scrollmenu */
+  width: 100%; /* Optionally, set a width to fill the available horizontal space */
+  background-color: rgb(28, 28, 28);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Style each box */
+.card {
+  
+  background-color:  rgb(28, 28, 28);
+  border-right:1px solid #797979;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box; /* Include border width in width and height */
+  padding: 10px;
 }
+
+.card h2 {
+  text-align: center;
+  
+  color: #333;
+}
+

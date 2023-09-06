@@ -1,1 +1,2 @@
 public/dota-Copy/**/*.json filter=lfs diff=lfs merge=lfs -text
+public/dota-Copy/**/*.jsonl filter=lfs diff=lfs merge=lfs -text
