@@ -77,7 +77,7 @@ const Sidebar = () => {
 
     // Fetch data initially
     fetchData();
-    const intervalId = setInterval(fetchData, 6000);
+    const intervalId = setInterval(fetchData, 8000);
     return () => clearInterval(intervalId);
   }, []);
   

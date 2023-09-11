@@ -50,3 +50,46 @@
   color: #333;
 }
 
+
+
+
+
+
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: -60px; /* Adjust this value to control the distance from the image */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip .tooltiptext {
+  font-size: 11px; /* Adjust the font size as needed */
+}
+
+/* Tooltip text - show on hover */
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Style for the player image */
+.player-image {
+  /* Add any additional styling for the player image here */
+  position: relative;
+}

@@ -6,6 +6,11 @@ const nextConfig = {
     config.resolve.fallback = {fs: false};
     return config
   },
+  images: {
+    domains: ['cdn.dota2.com'],
+   
+    formats: ['image/avif', 'image/webp']
+  }
 }
 
 module.exports = nextConfig

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "@tremor/react": "^3.7.2",
     "autoprefixer": "10.4.15",
+    "date-fns": "^2.30.0",
     "fs": "^0.0.1-security",
     "next": "13.4.19",
     "postcss": "8.4.29",
