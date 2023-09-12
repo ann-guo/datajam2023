@@ -28,17 +28,17 @@ module.exports = {
             emphasis: "#374151", // gray-700
             blue: '#070622', //
             lightblue: '#1E1E48', //
-            card:'#1e2b5f'
+            card:'#94A3B8'
           },
           border: {
-            DEFAULT: "#e5e7eb", // gray-200
+            DEFAULT: "#52525B", // gray-200
           },
           ring: {
-            DEFAULT: "#e5e7eb", // gray-200
+            DEFAULT: "#52525B", // gray-200
           },
           content: {
-            subtle: "#F4F4F5", // gray-400
-            DEFAULT: "#F4F4F5", // gray-500
+            subtle: "#2e3642", // gray-400
+            DEFAULT: "#2e3642", // gray-500
             emphasis: "#374151", // gray-700
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
@@ -86,9 +86,9 @@ module.exports = {
         "dark-tremor-dropdown": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
       },
       borderRadius: {
-        "tremor-small": "0.375rem",
-        "tremor-default": "0.5rem",
-        "tremor-full": "9999px",
+        "tremor-small": "0",
+        "tremor-default": "0",
+        "tremor-full": "0",
       },
       fontSize: {
         "tremor-label": ["0.75rem"],

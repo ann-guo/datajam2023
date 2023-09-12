@@ -10,7 +10,7 @@ const timezone = 'Europe/Paris'; // Adjust the timezone to your desired timezone
 
 const formattedNow = formatISO(now, { timeZone: timezone });
 const formattedNext24Hours = formatISO(next24Hours, { timeZone: timezone });
-const teamQuery = `
+const next24 = `
 query GetAllSeriesInNext24Hours {
   allSeries(
     filter:{

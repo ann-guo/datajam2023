@@ -18,6 +18,7 @@ import {
     DeltaType,
     Grid,
     Text,
+    Title,
   } from "@tremor/react";
 const API_KEY = '2Is935kzXLtodIzxLCPjJrvHCnvfGyZembiAXWic'; 
 
@@ -36,6 +37,9 @@ const teamQuery = `
   
       games(filter: {started: true, finished: false}) {
         sequenceNumber
+        clock {
+          currentSeconds
+        }
         map {
           name
           bounds {
@@ -119,6 +123,11 @@ const kdaScore = (player) =>{
   return kdaScore.toFixed(2)
 
 }
+const ingametime = (time) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = time% 60;
+  return minutes+":"+seconds
+}
 
 const Live = () => {
   const [apiData, setApiData] = useState(null);
@@ -156,18 +165,25 @@ const Live = () => {
     return () => clearInterval(intervalId);
   }, [apiData, lastFetchTime]);
 
+  const conversionFactor = 10; // Adjust this based on your game's time scale
+
+// Calculate the in-game time
 
   return (
     <div className="flex">
       <Sidebar />
       <main className="flex-1 p-10 bg-tremor-background-lightblue">
-      <Text className="text-xl text-gray-100"> Last updated: {time} </Text>
+        
       
   {apiData?.seriesState?.games.length > 0 ? (
-    <div className="text-white">
-        
-      <Text className='p-3'>Team 1</Text>
+    <div>
+      <div class="transform scale-y-95">
+      <div className="flex"><Card className="bg-tremor-background-card"> <Text className="text-xl ">{ingametime(apiData.seriesState.games[0].clock.currentSeconds)}</Text></Card>
+      <Card className="bg-tremor-background-card"><Text className="text-xl">Last updated: {time}</Text></Card></div>
+      
+      <br></br>
       <Card className="bg-tremor-background-card">
+        <Title >{apiData.seriesState.games[0].teams[0].side } team</Title>
         <Table>
           <TableHead>
             <TableRow>
@@ -176,7 +192,7 @@ const Live = () => {
               <TableHeaderCell className="text-right">KDA</TableHeaderCell>
               <TableHeaderCell className="text-right">Net Worth</TableHeaderCell>
               <TableHeaderCell className="text-right">Money</TableHeaderCell>
-              <TableHeaderCell className="text-right">Items</TableHeaderCell>
+              <TableHeaderCell className="text-left">Items</TableHeaderCell>
          
             </TableRow>
           </TableHead>
@@ -188,7 +204,7 @@ const Live = () => {
                 <TableCell className="text-right">{kda(player)}</TableCell>
                 <TableCell className="text-right">{player.netWorth}</TableCell>
                 <TableCell className="text-right">{player.money}</TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-left">
                 <div className="flex">
                   {player.items.map((item, index) => {
                     const itemurl = itemsMapping[item.id] || "http://cdn.dota2.com/apps/dota2/images/items/recipe_heavens_halberd_lg.png";
@@ -206,9 +222,10 @@ const Live = () => {
           </TableBody>
         </Table>
       </Card>
+                  <br></br>
 
-      <Text className="p-3">Team 2</Text>
       <Card className="bg-tremor-background-card">
+        <Title>{apiData.seriesState.games[0].teams[1].side} team</Title>
         <Table>
           <TableHead>
             <TableRow>
@@ -217,7 +234,7 @@ const Live = () => {
               <TableHeaderCell className="text-right">KDA</TableHeaderCell>
               <TableHeaderCell className="text-right">Net Worth</TableHeaderCell>
               <TableHeaderCell className="text-right">Money</TableHeaderCell>
-              <TableHeaderCell className="text-right">Items</TableHeaderCell>
+              <TableHeaderCell className="text-left">Items</TableHeaderCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -228,7 +245,7 @@ const Live = () => {
                 <TableCell className="text-right">{kda(player)}</TableCell>
                 <TableCell className="text-right">{player.netWorth}</TableCell>
                 <TableCell className="text-right">{player.money}</TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-left">
                 <div className="flex">
                   {player.items.map((item, index) => {
                     const itemurl = itemsMapping[item.id] || "http://cdn.dota2.com/apps/dota2/images/items/recipe_heavens_halberd_lg.png";
@@ -246,8 +263,11 @@ const Live = () => {
           </TableBody>
         </Table>
       </Card>
+      </div>
+      <br></br>
       
-      {console.log(apiData?.seriesState?.games[0])}
+      
+     
       <Map gameData={apiData?.seriesState?.games[0]}/>
     </div>
     
@@ -255,7 +275,12 @@ const Live = () => {
 
   ) : (
     
-        <Text className="text-xl text-gray-100">No Live Games Available</Text>
+    <div className="flex">
+      <Card className="bg-tremor-background-card"><Text className="text-xl">No Live Games Available</Text> </Card>
+        <Card className="bg-tremor-background-card"><Text className="text-xl">Last updated: {time}</Text></Card>
+    </div>
+        
+        
        
     
   )}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //import {Link} from 'react-router-dom'
-import { Bold,Title } from '@tremor/react';
+import { Bold,Title, Metric} from '@tremor/react';
 import Live from '../pages/Live'
 const API_KEY = '2Is935kzXLtodIzxLCPjJrvHCnvfGyZembiAXWic';
 const teamQuery = `
@@ -87,7 +87,7 @@ const Sidebar = () => {
       <div className="flex flex-col h-screen p-5 text-gray-100">
         <div className="space-y-3">
           <div className="flex items-center justify-center">
-            <h2 className="text-2xl font-bold">DotaData</h2>
+            <a href="/"><Metric className="text-white">DOTADATA</Metric></a>
           </div>
           <div className="flex-1">
             <ul className="pt-2 pb-4 space-y-1 text-lg text-center">
@@ -117,15 +117,10 @@ const Sidebar = () => {
                   The International 2022
                 </a>
               </li>
-              <li className="rounded-sm">
-                <a
-                  href="/Arlington2022"
-                  className="flex items-center p-3 space-x-3 rounded-md"
-                >
-                  PGL Arlington Major 2022
-                </a>
-              </li>
+              
+              
             </ul>
+
           </div>
         </div>
       </div>
